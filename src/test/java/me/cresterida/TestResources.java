@@ -53,4 +53,50 @@ public class TestResources
         shortCodeRepo.persist(shortCodeEntity);
 
     }
+
+    @Test
+    void testAddShortCodeWithCreator()
+    {
+        ShortCodeEntity shortCodeEntity = new ShortCodeEntity();
+        shortCodeEntity.url = "https://www.nissei.com";
+        shortCodeEntity.shortCode = "nissei";
+        shortCodeEntity.creator = new CreatorEntity();
+        shortCodeEntity.creator.name = "Cresterida";
+        shortCodeEntity.creator.email = "kiquetal@gmail.com";
+        shortCodeRepo.persist(shortCodeEntity);
+
+        //test new shortcode with the same creator
+
+        ShortCodeEntity shortCodeEntity1 = new ShortCodeEntity();
+        shortCodeEntity1.url = "https://www.nissei.com";
+        shortCodeEntity1.shortCode = "nissei1";
+        shortCodeEntity1.creator = shortCodeEntity.creator;
+        shortCodeRepo.persist(shortCodeEntity1);
+
+    }
+
+    @Test
+    void testNewShortCodeWithExistingCreator()
+    {
+        ShortCodeEntity shortCodeEntity = new ShortCodeEntity();
+        shortCodeEntity.url = "https://www.larva.com";
+        shortCodeEntity.shortCode = "larva";
+        shortCodeEntity.creator = new CreatorEntity();
+        shortCodeEntity.creator.name = "Cresterida";
+        shortCodeEntity.creator.email = "kiquetal@gmail.com";
+        shortCodeRepo.persist(shortCodeEntity);
+    }
+
+    @Test
+    void testFindAllShortCOdeByCreator()
+    {
+        var list = shortCodeRepo.findByCreator("kiquetal@gmail.com");
+       list.forEach(shortCodeEntity ->
+               {
+                   System.out.println(shortCodeEntity.shortCode);
+                   System.out.println(shortCodeEntity.url);
+               }
+                );
+
+    }
 }

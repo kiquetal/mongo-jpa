@@ -25,4 +25,7 @@ public class ShortCodeEntity extends PanacheMongoEntity
 
     @BsonProperty("offset")
     public String offset;
+
+    @BsonProperty("creator")
+    public CreatorEntity creator;
 }
