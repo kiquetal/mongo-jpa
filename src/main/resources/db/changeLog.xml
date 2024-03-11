@@ -22,4 +22,11 @@
         </ext:createIndex>
 
     </changeSet>
+    <changeSet author="kiquetal" id="4">
+        <ext:createIndex collectionName="users">
+            <ext:keys>{email:1}</ext:keys>
+            <ext:options>{name:"email_idx", unique:true}</ext:options>
+        </ext:createIndex>
+
+    </changeSet>
 </databaseChangeLog>
