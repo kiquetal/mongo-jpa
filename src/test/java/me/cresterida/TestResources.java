@@ -125,4 +125,15 @@ public class TestResources
         shortCodeRepo.persist(shortCodeEntity1);
 
     }
+
+    @Test
+    void testGetAllUserWithCreatedShortedUrls()
+    {
+        var list = shortCodeRepo.findAll().list();
+        list.forEach(shortCodeEntity ->
+                {
+                    System.out.println(shortCodeEntity.creator.email);
+                }
+        );
+    }
 }
