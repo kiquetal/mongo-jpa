@@ -22,7 +22,9 @@ public class ShortCodeRepo implements PanacheMongoRepository<ShortCodeEntity>
     @Override
     public void persist(ShortCodeEntity shortCodeEntity)
     {
+        if (shortCodeEntity.createdAt == null)
         shortCodeEntity.createdAt = Instant.now();
+        if (shortCodeEntity.updatedAt == null)
         shortCodeEntity.updatedAt = Instant.now();
 
         shortCodeEntity.offset= ZonedDateTime.now(ZoneId.of("America/Asuncion")).getOffset().getId();

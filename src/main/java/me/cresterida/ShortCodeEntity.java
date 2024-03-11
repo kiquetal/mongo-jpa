@@ -28,4 +28,7 @@ public class ShortCodeEntity extends PanacheMongoEntity
 
     @BsonProperty("creator")
     public CreatorEntity creator;
+
+    @BsonProperty("expires_at")
+    public Instant expiresAt;
 }
