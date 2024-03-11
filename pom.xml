@@ -60,6 +60,10 @@
             <artifactId>jakarta.persistence-api</artifactId>
             <version>2.2.3</version>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-liquibase-mongodb</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
