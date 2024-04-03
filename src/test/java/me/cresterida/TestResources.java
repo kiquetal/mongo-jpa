@@ -8,7 +8,6 @@ import org.wildfly.common.Assert;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 
 @QuarkusTest
 public class TestResources
@@ -90,7 +89,7 @@ public class TestResources
     }
 
     @Test
-    void testFindAllShortCOdeByCreator()
+    void testFindAllShortCodeByCreator()
     {
         var list = shortCodeRepo.findByCreator("kiquetal@gmail.com");
        list.forEach(shortCodeEntity ->
