@@ -7,7 +7,6 @@ import org.wildfly.common.Assert;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 
 @QuarkusTest
 public class TestResources
@@ -108,7 +107,7 @@ public class TestResources
         ShortCodeEntity shortCodeEntity = new ShortCodeEntity();
         shortCodeEntity.url = "https://www.nissei.com";
         shortCodeEntity.shortCode = "nissei";
-        shortCodeEntity.expiresAt = ZonedDateTime.now().plus(20, ChronoUnit.SECONDS).toInstant();
+        shortCodeEntity.expiresAt = ZonedDateTime.now().plusSeconds(20).toInstant();
         shortCodeEntity.creator = new CreatorEntity();
         shortCodeEntity.creator.name = "Cresterida";
         shortCodeEntity.creator.email = "kiquetal@gmail.com";
@@ -117,7 +116,7 @@ public class TestResources
         ShortCodeEntity shortCodeEntity1 = new ShortCodeEntity();
         shortCodeEntity1.url = "https://www.nissei.com";
         shortCodeEntity1.shortCode = "nissei1";
-        shortCodeEntity1.expiresAt = ZonedDateTime.now().plus(20, ChronoUnit.SECONDS).toInstant();
+        shortCodeEntity1.expiresAt = ZonedDateTime.now().plusSeconds(20).toInstant();
         shortCodeEntity1.creator = new CreatorEntity();
         shortCodeEntity1.creator.name = "Cresterida";
         shortCodeEntity1.creator.email = "kiquetal@gmail.com";
@@ -130,9 +129,7 @@ public class TestResources
     {
         var list = shortCodeRepo.findAll().list();
         list.forEach(shortCodeEntity ->
-                {
-                    System.out.println(shortCodeEntity.creator.email);
-                }
+                System.out.println(shortCodeEntity.creator.email)
         );
     }
 }
